@@ -14,6 +14,8 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
+var version = "0.2.0"
+
 var NotFoundMessage = map[string]string{
 	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit new framesets.",
 }
@@ -135,6 +137,6 @@ func main() {
 		WriteTimeout: 0,
 	}
 
-	glog.Infof("* Serving on port %d with default framerate %d", *port, defaultFrameRateMS)
+	glog.Infof("* asciigif v%v serving on port %d with default framerate %d", version, *port, defaultFrameRateMS)
 	glog.Fatal(srv.ListenAndServe())
 }
