@@ -5,24 +5,25 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 
-	"github.com/hugomd/ascii-live/frames"
-
 	"github.com/golang/glog"
 	"github.com/gorilla/mux"
+	"github.com/pepa65/asciigif/frames"
 )
 
 var NotFoundMessage = map[string]string{
-	"error": "Frames not found. Navigate to /list for list of frames. Navigate to https://github.com/hugomd/ascii-live to submit new frames.",
+	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit new framesets.",
 }
 
 var NotCurledMessage = map[string]string{
-	"error": "You almost ruined a good surprise. Come on, curl it in terminal.",
+	"error": "You almost ruined a good surprise. Come on, curl (or wget -O-) it in a terminal.",
 }
 
 var availableFrames []string
+var defaultFrameRateMS int
 
 func init() {
 	for k := range frames.FrameMap {
@@ -37,11 +38,12 @@ func writeJson(w http.ResponseWriter, r *http.Request, res interface{}, status i
 		return
 	}
 	w.WriteHeader(status)
-	fmt.Fprint(w, string(data))
+	fmt.Fprint(w, string(data) + "\n")
 }
 
 func listHandler(w http.ResponseWriter, r *http.Request) {
 	writeJson(w, r, map[string][]string{"frames": availableFrames}, http.StatusOK)
+	glog.Infof("- List request")
 }
 
 func notFoundHandler(w http.ResponseWriter, r *http.Request) {
@@ -58,16 +60,25 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	vars := mux.Vars(r)
 	frameSource := vars["frameSource"]
-	glog.Infof("Frame source %s", frameSource)
+	glog.Infof("= Frameset: %s", frameSource)
+	frameRateMS := defaultFrameRateMS
+	framerate, err := strconv.Atoi(r.URL.Query().Get("framerate"))
+	if err == nil {
+		frameRateMS = framerate
+	}
+	glog.Infof("- Framerate: %v", frameRateMS)
 
 	frames, ok := frames.FrameMap[frameSource]
 	if !ok {
+		glog.Infof("# Frameset not found: %v", frameSource)
 		notFoundHandler(w, r)
 		return
 	}
 
 	userAgent := r.Header.Get("User-Agent")
-	if !strings.Contains(userAgent, "curl") {
+	glog.Infof("- User-Agent: %v", userAgent)
+	if !strings.Contains(userAgent, "curl") && !strings.Contains(userAgent, "Wget") {
+		glog.Infof("# Unapproved User-Agent")
 		notCurledHandler(w, r)
 		return
 	}
@@ -80,14 +91,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		select {
 		// Handle client disconnects
 		case <-cn.CloseNotify():
-			glog.Infof("Client stopped listening")
+			glog.Infof("- Client stopped listening")
 			return
 		default:
 			if i >= frames.GetLength() {
 				i = 0
 			}
-			// Artificially wait between reponses.
-			time.Sleep(frames.GetSleep())
+			// Wait between reponses
+			time.Sleep(time.Millisecond * time.Duration(frameRateMS))
 
 			// Clear screen
 			clearScreen := "\033[2J\033[H"
@@ -95,6 +106,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 			// Write frames
 			fmt.Fprint(w, clearScreen+frames.GetFrame(i)+newLine)
+			//fmt.Fprint(w, strconv.Itoa(i))
 			i++
 
 			// Send some data.
@@ -105,6 +117,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 // Server.
 func main() {
+	flag.IntVar(&defaultFrameRateMS, "framerate", 70, "Length of time to display each frame in milliseconds")
+	port := flag.Int("port", 8080, "Port number to serve on")
 	flag.Parse()
 	// Don't write to /tmp - doesn't work in docker scratch
 	flag.Set("logtostderr", "true")
@@ -113,15 +127,14 @@ func main() {
 	r.HandleFunc("/list", listHandler).Methods("GET")
 	r.HandleFunc("/{frameSource}", handler).Methods("GET")
 	r.NotFoundHandler = http.HandlerFunc(notFoundHandler)
-
 	srv := &http.Server{
 		Handler: r,
-		Addr:    ":8080",
+		Addr:    ":" + strconv.Itoa(*port),
 		// Set unlimited read/write timeouts
 		ReadTimeout:  0,
 		WriteTimeout: 0,
 	}
 
-	glog.Infof("Serving...")
+	glog.Infof("* Serving on port %d with default framerate %d", *port, defaultFrameRateMS)
 	glog.Fatal(srv.ListenAndServe())
 }

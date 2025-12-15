@@ -26,6 +26,7 @@ sssddNNNhhhhooooo////////////osdo////////////////./N/////oooooohhhhhNNNdddsssddN
 //////////////////oooohhhhhhhNsshhhhhoooooooooooo/.ooo/////////////////////////o
 //oohhhNNdddsss--------------s---------sssdNNNNNdN/Ns-----sssdddNNNNhhooo/////oo
 ds-----------ssssssddddsssssss--ssssssssdddddddddN/dddddddddsssss--------sssdNhh`,
+
 	`hhhooooooooooooooo////////////oo////////////////////////////////////////////////
 ooooooooooooooooooooooooooooooNdo///////////////////////////////////////////ooo/
 ooooooooooooooooooooooooooooooNdNhoooooooooooooo//////////o/o/oooooooooooooooooo
@@ -48,8 +49,9 @@ NNddddssssssddddNNNNhhhhhhhoooosdhoooooooooooohhhhh//...hN/ddsssssdddddNNNhhhoo/
 Nhhhoooo//////////////////////odso/////////////////////..oh////////ooooohhhNNddd
 //////////ooohhhNNNNddddsssssss--ssssssdddddddddddNNhhooo///oo//////////////////
 hhNdddss------------ssssssssssssssssssssssssssssssssssddNNood-----sssddNNhhhooo/
-------ssssddddddsssssss-----         -----------sssssddddddNddddddssss--------ss
-`, `ooooooooooooooo/////////////////////////////////////////////////////////////////
+------ssssddddddsssssss-----         -----------sssssddddddNddddddssss--------ss`,
+
+	`ooooooooooooooo/////////////////////////////////////////////////////////////////
 oooooooooooooooo//////////////oo////////////////////////////////////////////////
 ooooooooooooooooooooooooooooooddooo/////////////////////////////////////oooooooo
 ooooooooooooooooooooooooooooooNdNooooooooooooooooooooooooooooooooooooooooooooooo
@@ -71,8 +73,9 @@ oooooooooooooooo//o//o/o//o/ooNso////ooo///oooooohhhho/.Ndo//o//////////////////
 dddssssdddNNNhhhhhoooooo///////Nso///////////////////..//ohoohhhhNNNddddsddddddN
 ooo/////////////////////oooooooNshoooooo//////////////....///////////////////ooo
 //////ooohhNNNdddssss------------------------sssddNNNhhhhNddddNNNhhhoooo////////
-ohNds-------------ssssssddddddss-ssssssdddddddddddddddddddssss---------sssddNhho
-`, `oooooooooooo////////////////////////////////////////////////////////////////////
+ohNds-------------ssssssddddddss-ssssssdddddddddddddddddddssss---------sssddNhho`,
+
+	`oooooooooooo////////////////////////////////////////////////////////////////////
 ooooooooooooo////////////////oNo////////////////////////////////////////////////
 ooooooooooooooooooooooooooooohdNooooo/////////////////////////////oooooooooooooo
 ooooooooooooooooooooooooooooohdddhhNhooooooooooooooooooooooooooooooooooooooooooo
@@ -94,8 +97,9 @@ hhhhhhhhhhhhhhhhohooooooooooooNdhhhhhhhNNNdNoo//..//oNooooooooooo////o//////////
 ddssssddNNNhhooo///////////////hsh///////////////////o////////////////////////o/
 ooo///////////////ooohhhNNNNdddd-sdddddddddddNNhhho/hdddddNNNNNhhhhoooo/////////
 /////oohhNNdddss----------ssssss-ssssssssssssddddNhhdddddssssssssssssssssssssddo
-/hNds----------sssddddssssss-----   ----------sdddNhdsssssssddddddssdddddddddssh
-`, `ooooooo//////////////////////oh/////////////////////////////////////////////////
+/hNds----------sssddddssssss-----   ----------sdddNhdsssssssddddddssdddddddddssh`,
+
+	`ooooooo//////////////////////oh/////////////////////////////////////////////////
 oooooooooo///////////////////hdh////////////////////////////////////////////////
 ooooooooooooooooooooooooooooohddhoooo////////////////////////////o/ooooooooooooo
 ooooooooooooooooooooooooooooohdsNhddNhhhoooooooooooooooooooooooooooooooooooooooo
@@ -117,8 +121,9 @@ ooooooooooooooooooooooooooooooddoohhhhhNNhhhNNdddNNNNho////....hho//////////////
 sddNNhhooo/////////////////////Nso///////////////////////////////////////////ooo
 /////////////ooohhhNNNddddssssss-ssssddssssssssssssssddddddNNNNhhhhoooo/////////
 //ohhNNddsss--------ssssssssssss-sssssssddddddddddddddddddsssssssss-ssssssssddNN
-s---------sssdddddddsssss----  -         -------------sssssddddddddsdddddddssss-
-`, `ooo///////////////////////////ho////////////////////////////////////////////////
+s---------sssdddddddsssss----  -         -------------sssssddddddddsdddddddssss-`,
+
+	`ooo///////////////////////////ho////////////////////////////////////////////////
 ooo//////////////////////////odNo///////////////////////////////////////////////
 oooooooooooo/////////////////oNdNhhho/////////////////////////////////////////oo
 oooooooooooooooooooooooooooooodNdNohNhhooooooo///////////o/o/ooooooooooooooooooo
@@ -140,8 +145,9 @@ ohhNNddddssssddddNNNhhhhhoooooodso//////////////oooooooooooo//hhNNNddddddddddNNN
 ddNNhhooo//////////////////////Nso//////////////////////////////////////////oooo
 ////////////ooohhhNNNNddddssssss-sssssssssssssssssddddNNhhhhhhhhhoooo///////////
 /ohhNNddsss--------ssssssssssssssssssdddddddddddddddddddddddsssssss-ssssssdddNNN
---------ssssdddddddddssss----  --      -------------sssssddddddddddsddddddsssssd
-`, `/////////////////////////////hh/////////////////////////////////////////////////
+--------ssssdddddddddssss----  --      -------------sssssddddddddddsddddddsssssd`,
+
+	`/////////////////////////////hh/////////////////////////////////////////////////
 o////////////////////////////NNo////////////////////////////////////////////////
 oooooooooooo////////////////oNdNho//////////////////////////////////////////oooo
 oooooooooooooooooooooooooooooddNhhNhoooooo////////////////oooooooooooooooooooooo
@@ -163,8 +169,9 @@ NNdddssssdddNNhhhhoooooo//////Nso///////...//////////////..//ohhhNNNNddddddddNNN
 hhooo///////////////////////oohsh///////////////////.////////////////////////ooo
 ////////ooohhhNNNdddssss------s--ssssssssddNNNNNNNNhhhNNNdddNNNhhhhoooo/////////
 hNNddss------sssssssssssddsssss-ssssssssdddddddddddddddddddddddssssssssssssdddNN
-----ssssdddddddddsss----      --           -sssssdds--sssssdddddddsdddddddddsss-
-`, `////////////////////////////hN//////////////////////////////////////////////////
+----ssssdddddddddsss----      --           -sssssdds--sssssdddddddsdddddddddsss-`,
+
+	`////////////////////////////hN//////////////////////////////////////////////////
 ////////////////////////////hdho////////////////////////////////////////////////
 oooooooo////////////////////hdsNhhhoo///////////////////////////////////oooooooo
 ooooooooooooooooooooooooooooNNddoohhhNNhoooooooo/oo/oooooooooooooooooooooooooooo
@@ -186,8 +193,9 @@ hNNdddssssddNNNhhhoooo////////dd///////.............../////////ooooohhhhNNNddddN
 Nhhooo/////////////////////oooNsoooo//////////////////////////////////.....././/
 /////////ooohhhNNdddssss-----ss----------s------sssdNNNNNNNddddNNNNNhhhoooo////.
 ohNNddss-----ssssssssssdddsssss-ssssssssssssssddddddddddddddddddddsssssssssssssN
------ssssddddddddsss----      -                   -dddds-sssssddddsddddddddddddd
-`, `////////////////////////////dh//////////////////////////////////////////////////
+-----ssssddddddddsss----      -                   -dddds-sssssddddsddddddddddddd`,
+
+	`////////////////////////////dh//////////////////////////////////////////////////
 ////////////////////////////NNo/////////////////////////////////////////////////
 ooooo//////////////////////oNdNNho///////////////////////////////////////////ooo
 oooooooooooooooooooooooooooodNdhNdhooo//////////////////////////oooooooooooooooo
@@ -209,8 +217,9 @@ NNdddsssdddNNNhhooooo////////hso/////////.............////////ooooohhhhNNNddddd/
 hhoo/////////////////////oooohsNooo//////////////////////..///////////..////////
 /////////oohhNNNdddsss------ss--ssssssssssssss-ssssssssssssddddNNNNhhhooooo/////
 hhNddss-----ssssssssssddddssssssssssssssssssdddddddddddddddddddddsssssssssssssdo
-----sssdddddddddsss----       -                  -------ssssdddddsdddddddNdddddo
-`, `////////////////////////////ho//////////////////////////////////////////////////
+----sssdddddddddsss----       -                  -------ssssdddddsdddddddNdddddo`,
+
+	`////////////////////////////ho//////////////////////////////////////////////////
 ///////////////////////////oNNo///////////////////////////////////////////////o/
 oooooo/////////////////////oNdhho////////////////////////////////////////ooooooo
 ooooooooooooooooooooooooooooddNohNoooo/////////////////////////ooooooooooooooooo
@@ -232,8 +241,9 @@ hNNdddssssddNNNhhhhoooooo////Nd///////........////////..../ooohhhNNNNdddddddNNNo
 Nhhooo///////////////////////hso///////////////..................////....////oo/
 /////////ooohhhNNNdddsssssssss-ssssssssssssssssdddNNNhhhhhhNNhhhhoooooo/////////
 hhNNddss------ssssssssssddddsdssssssddddddddddddddddddddddddddssssssssssssdddNNo
------sssdddddddddssss-----   --         ----------ssssssdddddddddsdddddddddsssso
-`, `////////////////////////////oh//////////////////////////////////////////////oooo
+-----sssdddddddddssss-----   --         ----------ssssssdddddddddsdddddddddsssso`,
+
+	`////////////////////////////oh//////////////////////////////////////////////oooo
 ////////////////////////////hdo///////////////////////////////////////////oooooo
 oooooooooooo//////////////oohdNhohoo///////////////////////////ooooooooooooooooo
 ooooooooooooooooooooooooooooNdNhhhNhhhoooooooooooooooooooooooooooooooooooooooooo
@@ -255,8 +265,9 @@ NddddssssdddNNNhhhhooooooooooNso////////////////oooooohhhhhNNNNdddddddddNNNNhhoo
 hhooo////////////////////////hsh///////////......////.............//////oooohhho
 ////////ooohhhNNNddddsssssssss--ssssssssddddNNdddddddNNNNhhhhooooo//////////////
 hNdddss-------ssssssssssssddddsssssdddddddddddddddddddddssssssssssssssdddNNhhhho
-----sssddddddddddssss-----   --      ---------ssssssdddddddddddddsdddddsss---ssh
-`, `ooooo//oo///////////////////////////////////////////////////////oo/ooooooooooooo
+----sssddddddddddssss-----   --      ---------ssssssdddddddddddddsdddddsss---ssh`,
+
+	`ooooo//oo///////////////////////////////////////////////////////oo/ooooooooooooo
 oooooooooooooooooo/////o/o/ooNho//////////////////////oooooooooooooooooooooooooo
 oooooooooooooooooooooooooooooddhoooooooooooooooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooooohdsdhNhhoooooooooooooooooooooooooooooooooooooooooooo
@@ -278,8 +289,9 @@ oohhNNNddddssssssssdddddddNNNdsNhhhhhhhhhhhhhhhhhhNhNdddddddddNNNNhhhhoo////////
 dddNNhhhhoooo////////////////osN///////////////////////////ooooohhhhNNNdddddddN.
 ///////////////ooohhhhhNNNNNNN-dhhhooooooooooooooooo///////////////////////////.
 oohhNNNddsss--------------ssss-sssssssssssssssssss---ssssssssdddNNNhhhooooo/////
------------sssssdddddsssssssss--sssssssssddddddddddddddddddddssss------ssddddNN/
-`, `ooooooooooooo//////////////////////////////////////////////ooooooooooooooooooooo
+-----------sssssdddddsssssssss--sssssssssddddddddddddddddddddssss------ssddddNN/`,
+
+	`ooooooooooooo//////////////////////////////////////////////ooooooooooooooooooooo
 oooooooooooooooooooooooooooooNNoooooo///////oooo/ooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooooooNdNhooooooooooooooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooooooddNhhNhoooooooooooooooooooooooooooooooooooooooooooo
@@ -301,8 +313,9 @@ ohhNNddddssssssssdddddNNNNNNNNsdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhooo////ohhhooo/////
 ddNNNhhooooo//////////////////sd///////////////////////////////oo///hhNNNddddddN
 /////////////ooohhhhNNNNNNNdNNs-dNNNNhhhhhhoooooooooooo/////////////////////////
 oohNNNddsss--------------sssss-ssssssssssssssssddddddddddddssssddddNNhhhhoooo/..
-----------sssssddsssssssssss-------ssssssssssdddddddddddddddddddsss-----sssddh..
-`, `ooooooooooo////////////////////////////////////////////////ooooooooooooooooooooo
+----------sssssddsssssssssss-------ssssssssssdddddddddddddddddddsss-----sssddh..`,
+
+	`ooooooooooo////////////////////////////////////////////////ooooooooooooooooooooo
 oooooooooooooooooooooooooooodhooooooo///oo/ooooooooooooooooooooooooooooooooooooo
 ooooooooooooooooooooooooooooddNhoooooooooooooooooooooooooooooooooooooooooooooooo
 ooooooooooooooooooooooooooohdddhNNhohooooooooooooooooooooooooooooooooooooooooooo
@@ -324,8 +337,9 @@ hNNdddsssssssddddNNNNNNhhhhhNsNoooooooooooooohhhhhNNNNNhoNddsdddddNNNNNhhooo////
 NNhhoooo////////////////////osN/////////////////////////////////oooohhhNNNdddddd
 //////////ooohhhhNNNNdddddddd-sdNNNhhhhhhhhhhhhhhhhooooooooo////////////////////
 hNNdddss-------------ssssssss-ssssssssssssssssssssssddsssssssssssdddNNhhhoooo///
--------sssssdddssssssssss------------ssssssssdddddddddddddddddddssss-----ssddddh
-`, `oooooooooo////////////////////////////////////////////////oooooooooooooooooooooo
+-------sssssdddssssssssss------------ssssssssdddddddddddddddddddssss-----ssddddh`,
+
+	`oooooooooo////////////////////////////////////////////////oooooooooooooooooooooo
 ooooooooooooooo/oo//ooooooohNooo/o/////////////ooooooooooooooooooooooooooooooooo
 ooooooooooooooooooooooooooohdhoooooooooooooooooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooooNsdNNhooooooooooooooooooooooooooooooooooooooooooooooo
@@ -347,8 +361,9 @@ ooooooooooooooooooo//////ooNN////////////oho/.////ohdsdho///////////////////////
 ssssdddNNNhhhooooooo//o/////Ns///////////./////.///oohho//oooohhhhNNNNNdddddd...
 ////////////////////oooohhhhN-Nooooooo////////////////////////////////////////..
 ///oohhhNNdddsss------------s---------ssddNNNNNNNNNNNNdssssddddNNNhhhhooooo/////
-dss-------------ssssssdddssss-sssssssddddddddddddddddddddddsssss------sssdddddoo
-`, `ooooooooooooooooooo////ooooooooo////////////oooooooooooooooooooooooooooooooooooo
+dss-------------ssssssdddssss-sssssssddddddddddddddddddddddsssss------sssdddddoo`,
+
+	`ooooooooooooooooooo////ooooooooo////////////oooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooohdoooooooooooooooooooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooohsdhoooooooooooooooooooooooooooooooooooooooooooooooooo
 ooooooooooooooooooooooooooNdshhNNhhooooooooooooooooooooooooooooooooooooooooooooo
@@ -370,8 +385,9 @@ hhNNddddssssssssdddddNNNNNNdshhhhhhoooooooohhooooo//.../ohNddNhhoNNNNNhhhooo////
 dNNhhhhooo/////////////////hsh///////////////////////...../hNNNNooohhhhNNNddddd.
 ////////////oooohhhhNNNNNNNN-dNhhhhoohoooooooooooooooo///...///////////////////.
 ohhNNddsss--------------ssss-ssssssssssssdddddddddddddNdssddssssdddNNhhhhoooo///
-----------sssssddsssssssssss----ssssssssssdddddddddddddddddddddssss-----sssddsN/
-`, `oooooooooooooooooooooooooooooooo/////////ooooooooooooooooooooooooooooooooooooooo
+----------sssssddsssssssssss----ssssssssssdddddddddddddddddddddssss-----sssddsN`,
+
+	`oooooooooooooooooooooooooooooooo/////////ooooooooooooooooooooooooooooooooooooooo
 ooooooooooooooooooooooooooodNooooooooooooooooooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooooddNoooooooooooooooooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooooNshdNhooooooooooooooooooooooooooooooooooooooooooooooo
@@ -393,8 +409,9 @@ NNNdddsssssssdddNNNNNhhhhhhhdNooooooo/.hhNNho/...../ohNhhddddssdddddddNNNNhhhoo/
 NNhhhooo//////////////////ooNN//////////.//ohNhho//....o///////////ooooohhhNNNN.
 ///////////ooohhhNNNddddddddddNdNNNNNNNho/.../oohNhhhooohoooooo////////////////.
 hhNNddss-------------ssssssssssssssssssssdNho/////ooNdssssssssssssssddNNNhhhhho/
--------ssssssddsssssssss----s -------sssssdddNhoooohNNddddddddddsddsss-----ssdh/
-`, `ooooooooooooooooooooooooooooNooooooooooooooooooooooooooooooooooooooooooooooooooo
+-------ssssssddsssssssss----s -------sssssdddNhoooohNNddddddddddsddsss-----ssdh`,
+
+	`ooooooooooooooooooooooooooooNooooooooooooooooooooooooooooooooooooooooooooooooooo
 ooooooooooooooooooooooooooohdhoooooooooooooooooooooooooooooooooooooooooooooooooo
 ooooooooooooooooooooooooooohdNoooooooooooooooooooooooooooooooooooooooooooooooooo
 ooooooooooooooooooooooooooohsNhooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -416,6 +433,5 @@ NdddssssssddNNNhhhhoooooooo/o/..hdd..N////////////oooooooohhhhhNNNNdddsddddddNN.
 Nhhooo//////////////////////////hNh//do///////////////////////////////////ooooo.
 ////////oohhhNNddddssss---sdNho/NN///ss--------ssssssssddddNNNNhhhhhooo/////////
 hNddss----------ssssssssssssddNoNo//hdNNdddddddddddddddddddsssss-ssssssssssddNNh
-------ssssdssssssss------   ssdhh///NdhN----------sssssdddddddddsddddddddssss--s
-`,
+------ssssdssssssss------   ssdhh///NdhN----------sssssdddddddddsddddddddssss--`,
 }

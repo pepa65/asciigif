@@ -1,8 +1,9 @@
-module github.com/hugomd/ascii-live
+module github.com/pepa65/asciigif
 
-go 1.17
+go 1.25.4
 
 require (
-	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
-	github.com/gorilla/mux v1.7.3
+	github.com/golang/glog v1.2.5
+	github.com/gorilla/mux v1.8.1
+	github.com/hugomd/ascii-live v0.0.0-20250503202505-9695c975e852
 )
