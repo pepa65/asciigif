@@ -1,5 +1,5 @@
 package frames
-# Remove this line and replace NAME with the name
+# Remove this line and replace NAME with the name as in: localhost:8080/NAME
 func init() {
 	FrameMap["NAME"] = DefaultFrameType(_NAME)
 }

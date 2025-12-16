@@ -1,7 +1,8 @@
-# asciigif v0.4.0
+# asciigif v0.4.1
 
 **Ascii-gifs served for terminal consumption**
 
+* License: GPLv3
 * Repo: https://github.com/pepa65/asciigif
 * After [`ascii.live`](https://github.com/hugomd/ascii.live)
 * Latest version is running on [a-di.eu](https://a-di.eu/list)
@@ -12,17 +13,13 @@
 * List all available framesets: `curl localhost:8080/list`
 * Try in a terminal: `curl localhost:8080/badapple`
 * Clientside setting framerate: `curl localhost:8080/title?framerate=300`
-* License: GPLv3
 
 ## Install
 ### Download standalone binary
 ```
 wget -q 4e4.in/asciigif
-mv asciigif ~/bin/  # Assuming ~/bin is in PATH
+mv asciigif ~/bin/  # Assuming ~/bin is in $PATH
 ```
-
-### With gobinaries
-`wget -qO- gobinaries.com/pepa65/asciigif |sh`
 
 ### Build locally (needs Golang install)
 ```
@@ -44,10 +41,10 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o asciigif.ex
 * [Fork this repo](https://github.com/pepa65/asciigif/fork)
 * Clone your repo to work locally: `git clone https://github.com/YOURUSERNAME/asciigif`.
 * Manually:
-  - Copy the frameset template [`frames/.go`](.frames/.go): `cp frames/.go frames/MYFRAMESETNAME.go`.
+  - Copy the frameset template [`frames/.go`](.frames/.go): `cp frames/.go frames/NAME.go`.
   - Edit the new file with your frames.
 * From a .gif file:
-  - Run the `gif2go` file in this repo: `bash gif2go -n YOURNAME YOURFILE.gif`
+  - Run the `gif2go` file in this repo: `bash gif2go -n NAME YOURFILE.gif`
 * Commit and push your changes: `git commit -a && git push`
 * If you want can make a **P**ull**R**equest on github.com/pepa65/asciigif
   ([check GitHub's help page on pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)).

@@ -14,14 +14,14 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.4.0"
+var version = "0.4.1"
 
 var NotFoundMessage = map[string]string{
-	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit new framesets.",
+	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit framesets.",
 }
 
 var NotCurledMessage = map[string]string{
-	"error": "You almost ruined a good surprise. Come on, curl (or wget -O-) it in a terminal.",
+	"error": "You almost ruined a good surprise. Come on, curl (or wget -qO-) it in a terminal.",
 }
 
 var availableFrames []string
