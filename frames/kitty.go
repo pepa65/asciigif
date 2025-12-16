@@ -1,8 +1,10 @@
 package frames
 
-var Kitty = DefaultFrameType(kittyFrames)
+func init() {
+	FrameMap["kitty"] = DefaultFrameType(_kitty)
+}
 
-var kittyFrames = []string{
+var _kitty = []string{
 	`⠀⠀⠀⠰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⣁⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣄⡀⠀⢀⣀⣀⡀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⣼⠝⠉⠉⠛⠷⣦⣤⣶⣶⣶⣶⡾⠃⠀⠈⢻⡾⠛⠉⠉⢻⡆⠀⠀⠀⠀

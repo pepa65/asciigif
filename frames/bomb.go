@@ -1,8 +1,10 @@
 package frames
 
-var Bomb = DefaultFrameType(bomb)
+func init() {
+	FrameMap["bomb"] = DefaultFrameType(_bomb)
+}
 
-var bomb = []string{
+var _bomb = []string{
 	`
                     :
                    .-

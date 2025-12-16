@@ -1,10 +1,11 @@
 package frames
 
 import "time"
-
-var Clock = FrameType{
-	GetFrame:  getClockFrame,
-	GetLength: getClockLength,
+func init() {
+	FrameMap["clock"] = FrameType{
+		GetFrame:  getClockFrame,
+		GetLength: getClockLength,
+	}
 }
 
 func getClockFrame(i int) string {

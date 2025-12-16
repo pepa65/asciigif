@@ -27,39 +27,4 @@ func DefaultFrameType(frames []string) FrameType {
 	}
 }
 
-var FrameMap = map[string]FrameType{
-// LABEL             VARIABLE
-// (a-di.eu/LABEL)   ([Default]FrameType)
-	"batman":          Batman,
-	"batmanrobin":     BatmanRobin,
-	"clock":           Clock,
-	"coin":            Coin,
-	"donut":           Donut,
-	"dvd":             Dvd,
-	"forrest":         Forrest,
-	"hes":             HES,
-	"knot":            Knot,
-	"nyan":            Nyan,
-	"parrot":          Parrot,
-	"rick":            Rick,
-	"spidy":           Spidy,
-	"purdue":          Purdue,
-	"as":              As,
-	"bomb":            Bomb,
-	"maxwell":         Maxwell,
-	"earth":           Earth,
-	"kitty":           Kitty,
-	"india":           India,
-	"brittany":        Brittany,
-	"blueshirt":       Blueshirt,
-	"sixtyseven":      Sixtyseven,
-	"macarenavisbal":  MacarenaVisbal,
-	"badapple":        BadApple,
-	"gandalf":         Gandalf,
-	"love":            Love,
-	"gon":             Gon,
-	"skull":           Skull,
-	"gina":            Gina,
-	"sodapop":         SodaPop,
-	"darkfountain":    DarkFountain,
-}
+var FrameMap = map[string]FrameType{}

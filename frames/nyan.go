@@ -1,8 +1,10 @@
 package frames
 
-var Nyan = DefaultFrameType(nyanFrames)
+func init() {
+	FrameMap["nyan"] = DefaultFrameType(_nyan)
+}
 
-var nyanFrames = []string{
+var _nyan = []string{
 	`                                             cl
                                             .cc'
 

@@ -1,8 +1,10 @@
 package frames
 
-var Earth = DefaultFrameType(earthframes)
+func init() {
+	FrameMap["earth"] = DefaultFrameType(_earth)
+}
 
-var earthframes = []string{
+var _earth = []string{
 	`                        .-/+ossooooooo+/:.
                   ~:osydhyo++:     :yyyyydN@ho:~
                :sho:~~.       .+o~~d@h./N@@@@@@@@s:

@@ -1,8 +1,10 @@
 package frames
 
-var BadApple = DefaultFrameType(_BadApple)
+func init() {
+	FrameMap["badapple"] = DefaultFrameType(_badapple)
+}
 
-var _BadApple = []string{
+var _badapple = []string{
 	`                                                                      I@
                                                                       J@
                                                                       |@

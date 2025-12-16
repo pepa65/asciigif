@@ -1,8 +1,10 @@
 package frames
 
-var Donut = DefaultFrameType(DonutFrames)
+func init() {
+	FrameMap["donut"] = DefaultFrameType(_donut)
+}
 
-var DonutFrames = []string{
+var _donut = []string{
 	`                                      ▓▓▓▓▓
                                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
                             ▓▓▓▓▓▓▚▚▚$$$$$$$▚▚▚▓▓▓▓▓▓

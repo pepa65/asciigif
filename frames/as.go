@@ -1,8 +1,10 @@
 package frames
 
-var As = DefaultFrameType(_As)
+func init() {
+	FrameMap["as"] = DefaultFrameType(_as)
+}
 
-var _As = []string{
+var _as = []string{
 	` ▒▓▓▓▓▓▓▓▓▓▓                                   ▒▓▓▓▓▓▓▓▓▓▓
  ▒▓▓▓▓▓▓▓▓▓▓                                   ▒▓▓▓▓▓▓▓▓▓▓
  ▒▓▓▓▓▓▓                                           ▒▓▓▓▓▓▓

@@ -1,8 +1,10 @@
 package frames
 
-var Parrot = DefaultFrameType(parrotFrames)
+func init() {
+	FrameMap["parrot"] = DefaultFrameType(_parrot)
+}
 
-var parrotFrames = []string{
+var _parrot = []string{
 	`                        .cccc;;cc;';c.
                       .,:dkdc:;;:c:,:d:.
                      .loc'.,cc::::::,..,:.

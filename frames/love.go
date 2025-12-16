@@ -1,8 +1,10 @@
 package frames
 
-var Love = DefaultFrameType(love)
+func init() {
+	FrameMap["love"] = DefaultFrameType(_love)
+}
 
-var love = []string{
+var _love = []string{
 	`
 
                          .::. .-.  .*=.-=+==   ..

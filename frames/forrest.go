@@ -1,8 +1,10 @@
 package frames
 
-var Forrest = DefaultFrameType(forrestFrames)
+func init() {
+	FrameMap["forrest"] = DefaultFrameType(_forrest)
+}
 
-var forrestFrames = []string{
+var _forrest = []string{
 	`                      ,dlc:;.
                      .,;lkOx,
                      .,,cxkd'

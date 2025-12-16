@@ -1,8 +1,10 @@
 package frames
 
-var Coin = DefaultFrameType(coinFrames)
+func init() {
+	FrameMap["coin"] = DefaultFrameType(_coin)
+}
 
-var coinFrames = []string{
+var _coin = []string{
 	`~~~~~~~~~~~~^P@@@@@@@@@@@@@P^~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~7??????5GGGGGGGGGGGGG5??????7~~~~~~~~~~~~~~~
 ~~~~~^B@@@@@@?             7@@@@@@B^^~~~~~~~~~~~~~

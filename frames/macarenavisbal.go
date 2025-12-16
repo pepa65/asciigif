@@ -1,8 +1,10 @@
 package frames
 
-var MacarenaVisbal = DefaultFrameType(macarenavisbal)
+func init() {
+	FrameMap["macarenavisbal"] = DefaultFrameType(_macarenavisbal)
+}
 
-var macarenavisbal = []string{
+var _macarenavisbal = []string{
 	` .        .       ..        .       .        . .       . .       .                    .          .   .
 ....................................:.:.................................................................
 .............:::::::::::::::::::::::::::----------------------------------------:-::::::::::::::::::::::

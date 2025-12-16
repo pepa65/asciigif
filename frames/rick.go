@@ -1,8 +1,10 @@
 package frames
 
-var Rick = DefaultFrameType(rickFrames)
+func init() {
+	FrameMap["rick"] = DefaultFrameType(_rick)
+}
 
-var rickFrames = []string{
+var _rick = []string{
 	`tfffLfttffffffLLffffttttttttttt1tfffffffffftttttt111111tffffffffftttff
 fttfffttfffffffffttfftttttt1t1tt11tfffffftttttt111t111111ttffffLLffttf
 LfttttffLLLfttttftfLftttttttffffttttffffttttfftt11t111tt111ttfffLffttf

@@ -14,7 +14,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.2.1"
+var version = "0.3.0"
 
 var NotFoundMessage = map[string]string{
 	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit new framesets.",
@@ -108,7 +108,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 			// Write frames
 			fmt.Fprint(w, clearScreen+frames.GetFrame(i)+newLine)
-			//fmt.Fprint(w, strconv.Itoa(i))
 			i++
 
 			// Send some data.
@@ -117,7 +116,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Server.
+// Server
 func main() {
 	flag.IntVar(&defaultFrameRateMS, "framerate", 70, "Length of time to display each frame in milliseconds")
 	port := flag.Int("port", 8080, "Port number to serve on")

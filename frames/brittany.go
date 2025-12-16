@@ -1,8 +1,10 @@
 package frames
 
-var Brittany = DefaultFrameType(brittanyFrame)
+func init() {
+	FrameMap["brittany"] = DefaultFrameType(_brittany)
+}
 
-var brittanyFrame = []string{
+var _brittany = []string{
 	`hhhoohhooooooooooo//////////////////////////////////////////////////////////////
 hhhhoooooooooooooooo////////oNo/////////////////////////////////////////////////
 oooooooooooooooooooooooooooooNNooo////////////////////////////////////////oooooo

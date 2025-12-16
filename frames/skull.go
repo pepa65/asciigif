@@ -1,8 +1,10 @@
 package frames
 
-var Skull = DefaultFrameType(skull)
+func init() {
+	FrameMap["skull"] = DefaultFrameType(_skull)
+}
 
-var skull = []string{
+var _skull = []string{
 	`============================================================
                       .ed"""" """$$$$be.
                    -"           ^""**$$$e.

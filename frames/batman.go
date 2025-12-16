@@ -1,8 +1,10 @@
 package frames
 
-var Batman = DefaultFrameType(BatmanFrames)
+func init() {
+	FrameMap["batman"] = DefaultFrameType(_batman)
+}
 
-var BatmanFrames = []string{
+var _batman = []string{
 	`  .,   ',... ........ .'..,'.::'   '. ..  .          ....   ;.. .,       .. ,:...     .
   .   .,.  ..        ...............    . ...:.........';.. .   .. ...        ' .c. .            .
   .    .;               ..  ''. .. .        .. .'.  ..... . .    ' ..,   .. . '  ',        .

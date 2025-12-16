@@ -1,8 +1,10 @@
 package frames
 
-var India = DefaultFrameType(indiaFrames)
+func init() {
+	FrameMap["india"] = DefaultFrameType(_india)
+}
 
-var indiaFrames = []string{
+var _india = []string{
 `        .--,_
         ['   '\.----.
          \          /

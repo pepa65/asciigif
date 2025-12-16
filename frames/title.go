@@ -35,6 +35,7 @@ func generateGlitchedFrames(input string, count int) []string {
 	}
 	return frames
 }
+
 func init() {
 	titleFrames = generateGlitchedFrames(titleFrame, 20)
 	FrameMap["title"] = DefaultFrameType(titleFrames)

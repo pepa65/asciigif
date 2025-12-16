@@ -1,8 +1,10 @@
 package frames
 
-var Knot = DefaultFrameType(_Knot)
+func init() {
+	FrameMap["knot"] = DefaultFrameType(_knot)
+}
 
-var _Knot = []string{
+var _knot = []string{
 	`
 
 
