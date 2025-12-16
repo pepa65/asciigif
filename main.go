@@ -14,7 +14,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.4.1"
+var version = "0.4.2"
 
 var NotFoundMessage = map[string]string{
 	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit framesets.",

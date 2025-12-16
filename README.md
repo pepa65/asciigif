@@ -1,4 +1,4 @@
-# asciigif v0.4.1
+# asciigif v0.4.2
 
 **Ascii-gifs served for terminal consumption**
 
