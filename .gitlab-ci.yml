@@ -1,0 +1,22 @@
+image: golang:latest
+
+stages:
+  - build
+
+building:
+  stage: build
+  script:
+    - go get -u github.com/pepa65/asciigif
+    - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w"
+    - CGO_ENABLED=0 GOOS=dragonfly GOARCH=amd64 go build -ldflags="-s -w" -o asciigif_dragonfly
+    - CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64 go build -ldflags="-s -w" -o asciigif_freebsd
+    - CGO_ENABLED=0 GOOS=netbsd GOARCH=amd64 go build -ldflags="-s -w" -o asciigif_netbsd
+    - CGO_ENABLED=0 GOOS=openbsd GOARCH=amd64 go build -ldflags="-s -w" -o asciigif_openbsd
+  artifacts:
+    name: asciigif
+    paths:
+      - asciigif
+      - asciigif_dragonfly
+      - asciigif_freebsd
+      - asciigif_netbsd
+      - asciigif_openbsd
