@@ -1,6 +1,6 @@
 package frames
 
-var DarkFountain = DefaultFrameType(~DarkFountain)
+var DarkFountain = DefaultFrameType(_DarkFountain)
 
 var _DarkFountain = []string{
 	`...:.:......:.:.....:.....:::.::.:.::.:....................-:...:-.........................:..::..::......:..:.::.:.:....:.....
