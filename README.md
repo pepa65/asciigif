@@ -1,16 +1,44 @@
-# asciigif v0.3.0
+# asciigif v0.4.0
 
 **Ascii-gifs served for terminal consumption**
 
+* Repo: https://github.com/pepa65/asciigif
 * After [`ascii.live`](https://github.com/hugomd/ascii.live)
 * Latest version is running on [a-di.eu](https://a-di.eu/list)
 * Run locally (by default on port `8080`), run: `asciigif`
-* Run on a different port: `asciigif -port 8888`
-* Run with a different default framerate than 70: `asciigif -framerate 200`
+* Run on a different port: `asciigif --port 8888`
+* Run with a different default framerate than 70: `asciigif --framerate 200`
+* Show version: `asciigif --version`
 * List all available framesets: `curl localhost:8080/list`
 * Try in a terminal: `curl localhost:8080/badapple`
 * Clientside setting framerate: `curl localhost:8080/title?framerate=300`
 * License: GPLv3
+
+## Install
+### Download standalone binary
+```
+wget -q 4e4.in/asciigif
+mv asciigif ~/bin/  # Assuming ~/bin is in PATH
+```
+
+### With gobinaries
+`wget -qO- gobinaries.com/pepa65/asciigif |sh`
+
+### Build locally (needs Golang install)
+```
+git clone https://github.com/pepa65/asciigif
+cd asciigif
+CGO_ENABLED=0 go install -ldflags="-s -w"  # Flags for smaller binary
+upx --best --lzma asciigif  # Compress the binary for smaller size
+mv asciigif ~/bin/  # Assuming ~/bin is in PATH
+
+# Build for various architectures:
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o asciigif
+CGO_ENABLED=0 GOOS=linux GOARCH=arm go build -ldflags="-s -w" -o asciigif_pi
+CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64 go build -ldflags="-s -w" -o asciigif_bsd
+CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-s -w" -o asciigif_osx
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o asciigif.exe
+```
 
 ## Adding framesets
 * [Fork this repo](https://github.com/pepa65/asciigif/fork)

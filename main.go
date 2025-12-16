@@ -14,7 +14,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.3.0"
+var version = "0.4.0"
 
 var NotFoundMessage = map[string]string{
 	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit new framesets.",
@@ -120,7 +120,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	flag.IntVar(&defaultFrameRateMS, "framerate", 70, "Length of time to display each frame in milliseconds")
 	port := flag.Int("port", 8080, "Port number to serve on")
+	vers := flag.Bool("version", false, "Show version")
 	flag.Parse()
+	if *vers {
+		fmt.Println("asciigif " + version)
+		return
+	}
 	// Don't write to /tmp - doesn't work in docker scratch
 	flag.Set("logtostderr", "true")
 
