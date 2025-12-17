@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -14,7 +15,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.4.4"
+var version = "0.5.0"
 
 var NotFoundMessage = map[string]string{
 	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit framesets.",
@@ -31,6 +32,7 @@ func init() {
 	for k := range frames.FrameMap {
 		availableFrames = append(availableFrames, k)
 	}
+	sort.Strings(availableFrames)
 }
 
 func writeJson(w http.ResponseWriter, r *http.Request, res interface{}, status int) {
@@ -121,9 +123,15 @@ func main() {
 	flag.IntVar(&defaultFrameRateMS, "framerate", 70, "Length of time to display each frame in milliseconds")
 	port := flag.Int("port", 8080, "Port number to serve on")
 	vers := flag.Bool("version", false, "Show version")
+	list := flag.Bool("list", false, "Show available framesets")
 	flag.Parse()
 	if *vers {
 		fmt.Println("asciigif " + version)
+		return
+	}
+	if *list {
+		//fmt.Println(strings.Trim(fmt.Sprint(availableFrames), "[]"))
+		fmt.Println(strings.Join(availableFrames, " "))
 		return
 	}
 	// Don't write to /tmp - doesn't work in docker scratch
@@ -140,7 +148,6 @@ func main() {
 		ReadTimeout:  0,
 		WriteTimeout: 0,
 	}
-
 	glog.Infof("* asciigif v%v serving on port %d with default framerate %d", version, *port, defaultFrameRateMS)
 	glog.Fatal(srv.ListenAndServe())
 }
