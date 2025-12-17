@@ -1,4 +1,4 @@
-# asciigif v0.6.1
+# asciigif v0.6.2
 
 **Ascii-gifs served for terminal consumption**
 
@@ -17,7 +17,7 @@
 ## Install
 ### Download standalone binary
 ```
-wget -q 4e4.in/asciigif
+wget 4e4.in/asciigif
 mv asciigif ~/bin/  # Assuming ~/bin is in $PATH
 ```
 
