@@ -15,7 +15,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.6.2"
+var version = "0.7.0"
 
 var NotFoundMessage = map[string]string{
 	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit framesets.",
@@ -46,7 +46,7 @@ func writeJson(w http.ResponseWriter, r *http.Request, res interface{}, status i
 }
 
 func listHandler(w http.ResponseWriter, r *http.Request) {
-	writeJson(w, r, map[string][]string{"frames": availableFrames}, http.StatusOK)
+	writeJson(w, r, map[string]interface{}{"version": version, "frames": availableFrames}, http.StatusOK)
 	glog.Infof("- List request")
 }
 
