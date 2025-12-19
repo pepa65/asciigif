@@ -63,12 +63,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	flusher := w.(http.Flusher)
 
 	userAgent := strings.Split(r.Header.Get("User-Agent"), " ")
-	if !strings.Contains(userAgent, "curl") && !strings.Contains(userAgent, "Wget") {
-		glog.Infof("### Unapproved User-Agent: %v", userAgent)
+	if !strings.Contains(userAgent[0], "curl") && !strings.Contains(userAgent[0], "Wget") {
+		glog.Infof("### Unapproved User-Agent: %v", userAgent[0])
 		notCurledHandler(w, r)
 		return
 	} else {
-		glog.Infof("=== User-Agent: %v", userAgent)
+		glog.Infof("=== User-Agent: %v", userAgent[0])
 	}
 
 	vars := mux.Vars(r)
