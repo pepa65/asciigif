@@ -1,3 +1,5 @@
+version: 2
+
 upx:
   - enabled: true
     compress: best
@@ -18,7 +20,7 @@ builds:
       - plan9
 
 checksum:
-  version_template: 'checksums.txt'
+  name_template: 'checksums.txt'
 
 changelog:
   sort: asc
