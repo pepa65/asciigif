@@ -15,7 +15,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.7.0"
+var version = "0.8.0"
 
 var NotFoundMessage = map[string]string{
 	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit framesets.",
@@ -62,28 +62,28 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	cn := w.(http.CloseNotifier)
 	flusher := w.(http.Flusher)
 
+	userAgent := r.Header.Get("User-Agent")
+	glog.Infof("=== User-Agent: %v", userAgent)
+	if !strings.Contains(userAgent, "curl") && !strings.Contains(userAgent, "Wget") {
+		glog.Infof("### Unapproved User-Agent")
+		notCurledHandler(w, r)
+		return
+	}
+
 	vars := mux.Vars(r)
-	frameSource := vars["frameSource"]
-	glog.Infof("= Frameset: %s", frameSource)
 	frameRateMS := defaultFrameRateMS
 	framerate, err := strconv.Atoi(r.URL.Query().Get("framerate"))
 	if err == nil {
 		frameRateMS = framerate
 	}
-	glog.Infof("- Framerate: %v", frameRateMS)
+	glog.Infof("--- Framerate: %v", frameRateMS)
 
+	frameSource := vars["frameSource"]
+	glog.Infof("--- Frameset: %v", frameSource)
 	frames, ok := frames.FrameMap[frameSource]
 	if !ok {
-		glog.Infof("# Frameset not found: %v", frameSource)
+		glog.Infof("### Frameset not found")
 		notFoundHandler(w, r)
-		return
-	}
-
-	userAgent := r.Header.Get("User-Agent")
-	glog.Infof("- User-Agent: %v", userAgent)
-	if !strings.Contains(userAgent, "curl") && !strings.Contains(userAgent, "Wget") {
-		glog.Infof("# Unapproved User-Agent")
-		notCurledHandler(w, r)
 		return
 	}
 
@@ -95,7 +95,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		select {
 		// Handle client disconnects
 		case <-cn.CloseNotify():
-			glog.Infof("- Client stopped listening")
+			glog.Infof("### Client stopped listening")
 			return
 		default:
 			if i >= frames.GetLength() {
@@ -140,6 +140,6 @@ func main() {
 		ReadTimeout:  0,
 		WriteTimeout: 0,
 	}
-	glog.Infof("* asciigif v%v serving on port %d with default framerate %d", version, *port, defaultFrameRateMS)
+	glog.Infof("*** asciigif v%v serving on port %d with default framerate %d", version, *port, defaultFrameRateMS)
 	glog.Fatal(srv.ListenAndServe())
 }
