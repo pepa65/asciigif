@@ -15,7 +15,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.8.0"
+var version = "0.8.1"
 
 var NotFoundMessage = map[string]string{
 	"error": "Frameset not found. Navigate to /list for list of framesets. Navigate to https://github.com/pepa65/asciigif to submit framesets.",
@@ -62,12 +62,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	cn := w.(http.CloseNotifier)
 	flusher := w.(http.Flusher)
 
-	userAgent := r.Header.Get("User-Agent")
-	glog.Infof("=== User-Agent: %v", userAgent)
+	userAgent := strings.Split(r.Header.Get("User-Agent"), " ")
 	if !strings.Contains(userAgent, "curl") && !strings.Contains(userAgent, "Wget") {
-		glog.Infof("### Unapproved User-Agent")
+		glog.Infof("### Unapproved User-Agent: %v", userAgent)
 		notCurledHandler(w, r)
 		return
+	} else {
+		glog.Infof("=== User-Agent: %v", userAgent)
 	}
 
 	vars := mux.Vars(r)
