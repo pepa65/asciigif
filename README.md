@@ -13,6 +13,7 @@
 * List all available framesets: `curl localhost:8080/list`
 * Try in a terminal: `curl localhost:8080/badapple`
 * Clientside setting framerate: `curl localhost:8080/title?framerate=300`
+* Server logging is on stderr
 
 ## Install
 ### Download standalone binary

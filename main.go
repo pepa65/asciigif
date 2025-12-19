@@ -47,7 +47,7 @@ func writeJson(w http.ResponseWriter, r *http.Request, res interface{}, status i
 
 func listHandler(w http.ResponseWriter, r *http.Request) {
 	writeJson(w, r, map[string]interface{}{"version": version, "frames": availableFrames}, http.StatusOK)
-	glog.Infof("- List request")
+	glog.Infof("=== List request")
 }
 
 func notFoundHandler(w http.ResponseWriter, r *http.Request) {
@@ -118,7 +118,7 @@ func main() {
 	list := flag.Bool("list", false, "Show available framesets")
 	flag.Parse()
 	if *vers {
-		fmt.Println("asciigif " + version)
+		fmt.Println("asciigif v" + version)
 		return
 	}
 	if *list {
