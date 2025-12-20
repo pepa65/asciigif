@@ -15,7 +15,8 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.9.0"
+var version = "0.10.0"
+var number = 0
 
 var NoFrameMessage = map[string]string{
 	"error": "No frameset given, after domain give /frameset. Give /list for a list of framesets.",
@@ -50,25 +51,29 @@ func writeJson(w http.ResponseWriter, r *http.Request, res interface{}, status i
 }
 
 func noFrameHandler(w http.ResponseWriter, r *http.Request) {
+	number += 1
 	writeJson(w, r, NoFrameMessage, http.StatusNotFound)
+	fmt.Fprintf(os.Stderr, "### No frame requested (%d)\n", number)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	cn := w.(http.CloseNotifier)
 	flusher := w.(http.Flusher)
 
+	number += 1
+	n := number
 	userAgent := strings.Split(r.Header.Get("User-Agent"), " ")
 	vars := mux.Vars(r)
 	frameSource := vars["frameSource"]
 	if frameSource == "list" {
 		writeJson(w, r, map[string]interface{}{"version": version, "frames": availableFrames}, http.StatusOK)
-		fmt.Fprintf(os.Stderr, "--- List request from User-Agent: %v\n", userAgent[0])
+		fmt.Fprintf(os.Stderr, "--- List request from User-Agent: %v (%d)\n", userAgent[0], n)
 		return
 	}
 
 	// No /list
 	if !strings.Contains(userAgent[0], "curl") && !strings.Contains(userAgent[0], "Wget") {
-		fmt.Fprintf(os.Stderr, "### Request '%v' from unapproved User-Agent: %v\n", frameSource, userAgent[0])
+		fmt.Fprintf(os.Stderr, "### Request '%v' from unapproved User-Agent: %v (%d)\n", frameSource, userAgent[0], n)
 		writeJson(w, r, NotCurledMessage, http.StatusExpectationFailed)
 		return
 	}
@@ -76,7 +81,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	// Approved User-Agent
 	frames, ok := frames.FrameMap[frameSource]
 	if !ok {
-		fmt.Fprintf(os.Stderr, "### Frameset '%v' not found for User-Agent %v\n", frameSource, userAgent[0])
+		fmt.Fprintf(os.Stderr, "### Frameset '%v' not found for User-Agent %v (%d)\n", frameSource, userAgent[0], n)
 		writeJson(w, r, NotFoundMessage, http.StatusNotFound)
 		return
 	}
@@ -87,7 +92,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if err == nil {
 		frameRateMS = framerate
 	}
-	fmt.Fprintf(os.Stderr, "--- Request '%v' at framerate %d with User-Agent: %v\n", frameSource, frameRateMS, userAgent[0])
+	fmt.Fprintf(os.Stderr, "--- Request '%v' at framerate %d with User-Agent: %v (%d)\n", frameSource, frameRateMS, userAgent[0], n)
 
 	w.Header().Set("Transfer-Encoding", "chunked")
 	w.WriteHeader(http.StatusOK)
@@ -97,7 +102,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		select {
 		// Handle client disconnects
 		case <-cn.CloseNotify():
-			fmt.Fprintf(os.Stderr, "### User-Agent %v stopped listening\n", userAgent[0])
+			fmt.Fprintf(os.Stderr, "### User-Agent %v (%d) stopped listening\n", userAgent[0], n)
 			return
 		default:
 			if i >= frames.GetLength() {
