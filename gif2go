@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
 set -e
 # gif2go - Generate asciigif frameset .go file from a GIF file
-# Usage:  gif2go [-o DIR] [-n NAME] [-b 2|8|24] [-w WIDTH] FILE.gif
+# Usage:  gif2go [-o DIR] [-n NAME] [-b 2|8|24] [-h HEIGHT] FILE.gif
 # Required:  jp2a imagemagick(convert)
 
 # Default values
 framesdir=frames
-colorbits=2
-width=64
+colors=2
+height=24
+bg=dark
+force=0
 
 Usage(){ # 1:message
-	echo "gif2go - Generate asciigif frameset .go file from a GIF file"
-	echo "Usage:  gif2go [-o DIR] [-n NAME] [-w WIDTH] [-b 2|8|24] FILE.gif"
-	echo "  DIR:    Directory with your frameset .go files (with frames.go in it)"
-	echo "  NAME:   The name that you use to invoke it, like: curl localhost:8080/NAME"
-	echo "  WIDTH:  Width in characters of the frameset"
-	echo "  The '-b' color bit depth can be 2 (b/w), 8, or 24 (\"true\" color)"
-	echo "  The -FLAGs must be given before the filename!"
+	cat <<-EOH
+		gif2go - Generate asciigif frameset .go file from a GIF file
+		Usage:  gif2go [-o DIR] [-n NAME] [-w WIDTH] [-c 2|4|8|24] [-l] [-f] FILE.gif
+		  DIR:     Directory with frames.go  and frameset files (default: frames)
+		  NAME:    Name used to invoke it, like: curl localhost:8080/NAME
+		  HEIGHT:  Heighth in characters of the frameset (default: 24)
+	    -c:      Colors:  2: B/W,  4: ANSI,  8: 256bit,  24: truecolor (default: 2)
+	    -l:      Light background (default: dark)
+	    -f:      Force writing the output file, overwriting any present file
+	  The -FLAGs must be given before the filename!
+	EOH
 	[[ $1 ]] &&
 		echo -e "\n$1"
 	exit
@@ -33,24 +39,25 @@ framesfile=$framesdir/frames.go
 
 # Get options
 file= name=
-while getopts ":ho:n:b:w:" opt
+while getopts ":lfo:n:c:h:" opt
 do
 	case $opt in
+	l) bg=light ;;
+	f) force=1 ;;
 	o) framesdir=$OPTARG ;;
-	b) colorbits=$OPTARG ;;
+	c) colors=$OPTARG ;;
 	n)
 		[[ $OPTARG =~ ^[a-zA-Z0-9_]+$ ]] &&
 			name=$OPTARG &&
 			continue
 		echo "### Not a alphanumeric+underscore name: $OPTARG"
 		exit 1 ;;
-	w)
+	h)
 		((OPTARG>0)) &&
-			width=$OPTARG &&
+			height=$OPTARG &&
 			continue
 		echo "## Not a positive integer for width: $OPTARG"
 		exit 1 ;;
-	h) Usage ;;
 	\?) Usage "### Unknown flag: -$OPTARG" ;;
 	*) Usage "### Unknown argument: $OPTARG"
   esac
@@ -67,17 +74,21 @@ file=$1
 	echo "### File not a .gif file: $file" &&
   exit 1
 
-[[ ! $colorbits = 2 && ! $colorbits = 8 && ! $colorbits = 24 ]] &&
-	echo "### Color bit depth can only be 2, 8 or 24, not '$colorbits'" &&
+[[ ! $colors = 2 && ! $colors = 4 && ! $colors = 8 && ! $colors = 24 ]] &&
+	echo "### Colors not 2 / 4 / 8 /24" &&
 	exit 1
 
 # Get frameset name
 [[ -z $name && ! $file =~ ^-.* ]] &&
 	name=$(basename "$file" .gif) name=${name//[^a-zA-Z0-9_]} name=${name,,}
 outfile=$framesdir/$name.go
-[[ -f $outfile ]] &&
-	echo "### Frameset file already exists: $outfile" &&
-	exit 1
+if [[ -f $outfile ]]
+then
+	((!force)) &&
+		echo "### Frameset file already exists: $outfile" &&
+		exit 1
+	echo "--- Overwriting existing frameset file: $outfile"
+fi
 
 # Set up output directory
 mkdir -p "$framesdir/$name"
@@ -91,7 +102,7 @@ out="package frames\n\nfunc init() {\n\tFrameMap[\"$name\"] = DefaultFrameType(_
 for f in "$framesdir/$name"/f*.png
 do
 	out+="\t\`"
-	out+=$(jp2a --colors --color-depth=$colorbits --background=dark --width=$width "$f" |sed 's/ *$//')
+	out+=$(jp2a --color-depth=$colors --background=$bg --height=$height "$f" |sed -e 's/ *$//' -e 's/ *`,/`,/')
 	out=${out:0: -1}"\`,\n\n"
 done
 out=${out:0: -2}"}"
