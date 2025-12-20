@@ -1,4 +1,4 @@
-# asciigif v0.12.0
+# asciigif v0.13.0
 
 **Ascii-gifs served for terminal consumption**
 
@@ -14,6 +14,18 @@
 * Try in a terminal: `curl localhost:8080/badapple`
 * Clientside setting framerate: `curl localhost:8080/title?framerate=300`
 * Server logging is on stderr
+
+## Usage
+```
+asciigif v0.13.0 - Ascii-gifs served for terminal consumption
+Repo:  github.com/pepa65/asciigif
+Usage: asciigif [--framerate MS] [--port PORT] [--list] [--version] [-h|--help]
+    --framerate MS:  Display-time of each frame in milliseconds (default 70)
+    --port PORT:     Port number to serve on (default 8080)
+    --list:          Show available framesets
+    --version:       Show version
+    --help:          Show this help text
+```
 
 ## Install
 ### Download standalone binary
