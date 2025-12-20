@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 # gif2go - Generate asciigif frameset .go file from a GIF file
-# Usage:  gif2go [-o DIR] [-n NAME] [-b 2|8|24] [-h HEIGHT] FILE.gif
-# Required:  jp2a imagemagick(convert)
+# Usage:  gif2go [-o DIR] [-n NAME] [-h HEIGHT] [-c 2|8|24] [-l] [-f] [-v] FILE.gif
+# Required:  jp2a imagemagick(convert) coreutils(cat mkdir rm) sed viu[-v](github.com/atanunq/viu)
 
 # Default values
 framesdir=frames
@@ -10,17 +10,19 @@ colors=2
 height=24
 bg=dark
 force=0
+viu=0
 
 Usage(){ # 1:message
 	cat <<-EOH
 		gif2go - Generate asciigif frameset .go file from a GIF file
-		Usage:  gif2go [-o DIR] [-n NAME] [-w WIDTH] [-c 2|4|8|24] [-l] [-f] FILE.gif
+		Usage:  gif2go [-o DIR] [-n NAME] [-h HEIGHT] [-c 2|4|8|24] [-v] [-l] [-f] GIF
 		  DIR:     Directory with frames.go  and frameset files (default: frames)
 		  NAME:    Name used to invoke it, like: curl localhost:8080/NAME
 		  HEIGHT:  Heighth in characters of the frameset (default: 24)
-	    -c:      Colors:  2: B/W,  4: ANSI,  8: 256bit,  24: truecolor (default: 2)
-	    -l:      Light background (default: dark)
-	    -f:      Force writing the output file, overwriting any present file
+		  -c:      Colors:  2: B/W,  4: ANSI,  8: 256bit,  24: truecolor (default: 2)
+		  -l:      Light background (default: dark)
+		  -v:      Use video-like output through 'viu' (-c and -l ignored)
+		  -f:      Force writing the output file, overwriting any present file
 	  The -FLAGs must be given before the filename!
 	EOH
 	[[ $1 ]] &&
@@ -38,12 +40,13 @@ framesfile=$framesdir/frames.go
 	Usage "### Must have at least a .gif filename as an argument"
 
 # Get options
-file= name=
-while getopts ":lfo:n:c:h:" opt
+gif= name=
+while getopts ":lfvo:n:c:h:" opt
 do
 	case $opt in
 	l) bg=light ;;
 	f) force=1 ;;
+	v) viu=1 ;;
 	o) framesdir=$OPTARG ;;
 	c) colors=$OPTARG ;;
 	n)
@@ -65,13 +68,13 @@ done
 shift $((OPTIND -1))
 
 # Check input file
-file=$1
-[[ ! -f $file ]] &&
-	echo "### File not found: $file" &&
+gif=$1
+[[ ! -f $gif ]] &&
+	echo "### File not found: $gif" &&
 	exit 1
 
-! file "$file" |grep -q GIF &&
-	echo "### File not a .gif file: $file" &&
+! file "$gif" |grep -q GIF &&
+	echo "### File not a .gif file: $gif" &&
   exit 1
 
 [[ ! $colors = 2 && ! $colors = 4 && ! $colors = 8 && ! $colors = 24 ]] &&
@@ -79,8 +82,8 @@ file=$1
 	exit 1
 
 # Get frameset name
-[[ -z $name && ! $file =~ ^-.* ]] &&
-	name=$(basename "$file" .gif) name=${name//[^a-zA-Z0-9_]} name=${name,,}
+[[ -z $name && ! $gif =~ ^-.* ]] &&
+	name=$(basename "$gif" .gif) name=${name//[^a-zA-Z0-9_]} name=${name,,}
 outfile=$framesdir/$name.go
 if [[ -f $outfile ]]
 then
@@ -90,24 +93,35 @@ then
 	echo "--- Overwriting existing frameset file: $outfile"
 fi
 
-# Set up output directory
-mkdir -p "$framesdir/$name"
-rm -f "$framesdir/$name"/*
-
-# Generate PNG frames
-convert -coalesce "$file" "$framesdir/$name/f%03d.png"
-
-# Generate ANSI frames into go file
 out="package frames\n\nfunc init() {\n\tFrameMap[\"$name\"] = DefaultFrameType(_$name)\n}\n\nvar _$name = []string{\n"
-for f in "$framesdir/$name"/f*.png
-do
-	out+="\t\`"
-	out+=$(jp2a --color-depth=$colors --background=$bg --height=$height "$f" |sed -e 's/ *$//' -e 's/ *`,/`,/')
-	out=${out:0: -1}"\`,\n\n"
-done
-out=${out:0: -2}"}"
+if ((viu))
+then
+	tmp=$(mktemp)
+	viu -1 -h $height $gif |
+		sed '1s/^.*\[c//' |  # Strip start directive
+		sed '/\r$/!{N; s/\n/`,\n\n\t`/}' |  # Replace non-CR end with delimiter
+		tr -d '\r' >"$tmp"  # Strip CR
+	out+="\t\`$(<"$tmp")"  # Add the first opening quote
+	out="${out:0: -1}\`,\n}"  # Strip final newline and add closing quote
+	rm "$tmp"
+else
+	# Set up output directory
+	mkdir -p "$framesdir/$name"
+	rm -f "$framesdir/$name"/*
+	# Generate PNG frames
+	convert -coalesce "$gif" "$framesdir/$name/f%03d.png"
+
+	# Generate ANSI frames into go file
+	for f in "$framesdir/$name"/f*.png
+	do
+		out+="\t\`"
+		out+=$(jp2a --color-depth=$colors --background=$bg --height=$height "$f" |sed -e 's/ *$//' -e 's/ *\`,/\`,/')
+		out=${out:0: -1}"\`,\n\n"
+	done
+	out="${out:0: -2}}"
+	rm -rf -- "$framesdir/$name"
+fi
 echo -e "$out" >"$outfile"
-rm -rf -- "$framesdir/$name"
 echo "=== Done: $outfile"
 
 exit 0

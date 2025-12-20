@@ -15,7 +15,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.11.0"
+var version = "0.12.0"
 var clientnumber = 0
 
 var NoFrameMessage = map[string]string{

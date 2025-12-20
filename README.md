@@ -1,4 +1,4 @@
-# asciigif v0.11.0
+# asciigif v0.12.0
 
 **Ascii-gifs served for terminal consumption**
 
@@ -45,8 +45,21 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o asciigif.ex
   - Copy the frameset template [`frames/.go`](.frames/.go): `cp frames/.go frames/NAME.go`.
   - Edit the new file with your frames.
 * From a .gif file:
-  - Run the `gif2go` file in this repo: `bash gif2go -n NAME YOURFILE.gif`
+  - Run the `gif2go` file in this repo: `bash gif2go -n NAME YOURFILE.gif` (see also below)
 * Commit and push your changes: `git commit -a && git push`
 * If you want can make a **P**ull**R**equest on github.com/pepa65/asciigif
   ([check GitHub's help page on pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)).
 
+### Usage `gif2go`
+```
+gif2go - Generate asciigif frameset .go file from a GIF file
+Usage:  gif2go [-o DIR] [-n NAME] [-h HEIGHT] [-c 2|4|8|24] [-v] [-l] [-f] GIF
+  DIR:     Directory with frames.go  and frameset files (default: frames)
+  NAME:    Name used to invoke it, like: curl localhost:8080/NAME
+  HEIGHT:  Heighth in characters of the frameset (default: 24)
+  -c:      Colors:  2: B/W,  4: ANSI,  8: 256bit,  24: truecolor (default: 2)
+  -l:      Light background (default: dark)
+  -v:      Use video-like output through 'viu' (-c and -l ignored)
+  -f:      Force writing the output file, overwriting any present file
+  The -FLAGs must be given before the filename!
+```
