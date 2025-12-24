@@ -2,7 +2,7 @@ version: 2
 
 upx:
   - enabled: true
-    compress: best
+    #compress: best
     goos: [linux]
 
 archives:
