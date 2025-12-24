@@ -1,4 +1,4 @@
-# asciigif v0.13.2
+# asciigif v0.14.0
 
 **Ascii-gifs served for terminal consumption**
 
@@ -17,7 +17,7 @@
 
 ## Usage
 ```
-asciigif v0.13.2 - Ascii-gifs served for terminal consumption
+asciigif v0.14.0 - Ascii-gifs served for terminal consumption
 Repo:  github.com/pepa65/asciigif
 Usage: asciigif [--framerate MS] [--port PORT] [--list] [--version] [-h|--help]
     --framerate MS:  Display-time of each frame in milliseconds (default 70)
