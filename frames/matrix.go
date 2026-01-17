@@ -4,8 +4,12 @@ import (
 	"math/rand"
 	"strings"
 	"time"
+)
 
-	"github.com/buger/goterm" // only for terminal size detection
+var (
+	ROWS = 24
+	COLS = 80
+	NFRAMES = 500
 )
 
 // Matrix animation
@@ -22,8 +26,7 @@ type drop struct {
 // generateFrames dynamically generates frames using terminal size
 func generateFrames() []string {
 	rand.Seed(time.Now().UnixNano())
-	ROWS, COLS := goterm.Height(), goterm.Width() // get terminal size dynamically
-	numFrames := 500
+	numFrames := NFRAMES
 	// initialize drops per column
 	drops := make([]drop, COLS)
 	for i := range drops {
