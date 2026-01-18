@@ -1,4 +1,4 @@
-# asciigif v0.15.1
+# asciigif v0.16.0
 
 **Ascii-gifs served for terminal consumption**
 
@@ -8,23 +8,23 @@
 * Latest version is running on [a-di.eu](https://a-di.eu/list)
 * Run locally (by default on port `8080`), run: `asciigif`
 * Run on a different port: `asciigif --port 8888`
-* Run with a different default framerate than 70: `asciigif --framerate 200`
+* Run with a different default frame pause than 70 ms: `asciigif --ms 200`
 * Show version: `asciigif --version`
 * List all available framesets: `curl localhost:8080/list`
 * Try in a terminal: `curl localhost:8080/badapple`
-* Clientside setting framerate: `curl localhost:8080/title?framerate=300`
+* Clientside setting frame pause: `curl localhost:8080/title?ms=300`
 * Server logging is on stderr
 
 ## Usage
 ```
-asciigif v0.15.1 - Ascii-gifs served for terminal consumption
+asciigif v0.16.0 - Ascii-gifs served for terminal consumption
 Repo:  github.com/pepa65/asciigif
-Usage: asciigif [--framerate MS] [--port PORT] [--list] [--version] [-h|--help]
-    --framerate MS:  Display-time of each frame in milliseconds (default 70)
-    --port PORT:     Port number to serve on (default 8080)
-    --list:          Show available framesets
-    --version:       Show version
-    --help:          Show this help text
+Usage: asciigif [--ms MS] [--port PORT] [--list] [--version] [-h|--help]
+    --ms MS:      Display-time of each frame in milliseconds [default 70]
+    --port PORT:  Port number to serve on [default 8080]
+    --list:       Show available framesets
+    --version:    Show version
+    --help:       Show this help text
 ```
 
 ## Install

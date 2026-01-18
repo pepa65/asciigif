@@ -15,26 +15,26 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.15.1"
+var version = "0.16.0"
 var clientnumber = 0
 var repo = "github.com/pepa65/asciigif"
-var defaultFramerate = 70
+var defaultFramepause = 70
 var defaultPort = 8080
 var NoFrameMessage = map[string]string{"error": "No frameset given, after domain give /frameset. Give /list for a list of framesets."}
 var NotFoundMessage = map[string]string{"error": "Frameset not present. Give /list for a list of framesets."}
 var NotCurledMessage = map[string]string{"error": "Not for graphical browsers, use curl (or wget -qO-) in a terminal."}
 var availableFrames []string
-var defFramerate int
+var defFramepause int
 
 func usage() {
 	fmt.Println("asciigif v" + version + ` - Ascii-gifs served for terminal consumption
 Repo:  ` + repo + `
-Usage: asciigif [--framerate MS] [--port PORT] [--list] [--version] [-h|--help]
-    --framerate MS:  Display-time of each frame in milliseconds (default ` + strconv.Itoa(defaultFramerate) + `)
-    --port PORT:     Port number to serve on (default ` + strconv.Itoa(defaultPort) + `)
-    --list:          Show available framesets
-    --version:       Show version
-    --help:          Show this help text`)
+Usage: asciigif [--ms MS] [--port PORT] [--list] [--version] [-h|--help]
+    --ms MS:      Display-time of each frame in milliseconds (default ` + strconv.Itoa(defaultFramepause) + `)
+    --port PORT:  Port number to serve on (default ` + strconv.Itoa(defaultPort) + `)
+    --list:       Show available framesets
+    --version:    Show version
+    --help:       Show this help text`)
 }
 
 func init() {
@@ -91,11 +91,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Existing frameset
-	framerate, err := strconv.Atoi(r.URL.Query().Get("framerate"))
+	framepause, err := strconv.Atoi(r.URL.Query().Get("ms"))
 	if err != nil {
-		framerate = defFramerate
+		framepause = defFramepause
 	}
-	fmt.Fprintf(os.Stderr, "--- Request '%v' at framerate %d with User-Agent: %v (%d)\n", frameSource, framerate, userAgent[0], client)
+	fmt.Fprintf(os.Stderr, "--- Request '%v' at framepause %d with User-Agent: %v (%d)\n", frameSource, framepause, userAgent[0], client)
 
 	w.Header().Set("Transfer-Encoding", "chunked")
 	w.WriteHeader(http.StatusOK)
@@ -114,7 +114,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			clearScreen, newline := "\033[2J\033[H", "\n"
 			fmt.Fprint(w, clearScreen+frames.GetFrame(i)+newline)
 			flusher.Flush()
-			time.Sleep(time.Millisecond * time.Duration(framerate))
+			time.Sleep(time.Millisecond * time.Duration(framepause))
 			i++
 		}
 	}
@@ -123,7 +123,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 // Server
 func main() {
 	flag.Usage = usage
-	flag.IntVar(&defFramerate, "framerate", defaultFramerate, "Display time of each frame in milliseconds")
+	flag.IntVar(&defFramepause, "ms", defaultFramepause, "Display time of each frame in milliseconds")
 	port := flag.Int("port", defaultPort, "Port number to serve on")
 	list := flag.Bool("list", false, "Show available framesets")
 	vers := flag.Bool("version", false, "Show version")
@@ -150,7 +150,7 @@ func main() {
 		ReadTimeout:  0,
 		WriteTimeout: 0,
 	}
-	fmt.Fprintf(os.Stderr, "=== asciigif v%v serving on port %d with default framerate %d\n", version, *port, defFramerate)
+	fmt.Fprintf(os.Stderr, "=== asciigif v%v serving on port %d with default framepause %d\n", version, *port, defFramepause)
 	err := srv.ListenAndServe()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
