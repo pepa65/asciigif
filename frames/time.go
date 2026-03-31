@@ -1,8 +1,9 @@
 package frames
 
 import "time"
+
 func init() {
-	FrameMap["clock"] = FrameType{
+	FrameMap["time"] = FrameType{
 		GetFrame:  getClockFrame,
 		GetLength: getClockLength,
 	}
@@ -14,5 +15,5 @@ func getClockFrame(i int) string {
 }
 
 func getClockLength() int {
-	return 0
+  return 0
 }

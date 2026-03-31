@@ -15,12 +15,12 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.16.0"
+var version = "0.17.0"
 var clientnumber = 0
 var repo = "github.com/pepa65/asciigif"
 var defaultFramepause = 70
 var defaultPort = 8080
-var NoFrameMessage = map[string]string{"error": "No frameset given, after domain give /frameset. Give /list for a list of framesets."}
+var NoFrameMessage = map[string]string{"error": "No frameset given, after domain give '/FRAMESET'. Give '/list' for a list of framesets. Optional parameter 'ms' specifies the pause in ms between frames: '/FRAMESET?ms=500'."}
 var NotFoundMessage = map[string]string{"error": "Frameset not present. Give /list for a list of framesets."}
 var NotCurledMessage = map[string]string{"error": "Not for graphical browsers, use curl (or wget -qO-) in a terminal."}
 var availableFrames []string
@@ -34,7 +34,8 @@ Usage: asciigif [--ms MS] [--port PORT] [--list] [--version] [-h|--help]
     --port PORT:  Port number to serve on (default ` + strconv.Itoa(defaultPort) + `)
     --list:       Show available framesets
     --version:    Show version
-    --help:       Show this help text`)
+    --help:       Show this help text
+  Clients can specify the 'ms' parameter, like: 'curl localhost:` + strconv.Itoa(defaultPort) + `/FRAMESET?ms=500'`)
 }
 
 func init() {
@@ -93,7 +94,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	// Existing frameset
 	framepause, err := strconv.Atoi(r.URL.Query().Get("ms"))
 	if err != nil {
-		framepause = defFramepause
+		if frameSource == "clock" || frameSource == "time" {
+			framepause = 1000
+		} else {
+			framepause = defFramepause
+		}
 	}
 	fmt.Fprintf(os.Stderr, "--- Request '%v' at framepause %d with User-Agent: %v (%d)\n", frameSource, framepause, userAgent[0], client)
 
