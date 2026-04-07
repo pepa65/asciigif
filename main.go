@@ -15,7 +15,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.17.0"
+var version = "0.18.0"
 var clientnumber = 0
 var repo = "github.com/pepa65/asciigif"
 var defaultFramepause = 70
@@ -155,7 +155,7 @@ func main() {
 		ReadTimeout:  0,
 		WriteTimeout: 0,
 	}
-	fmt.Fprintf(os.Stderr, "=== asciigif v%v serving on port %d with default framepause %d\n", version, *port, defFramepause)
+	fmt.Fprintf(os.Stderr, "=== asciigif v%v serving on http://0.0.0.0:%d with default framepause %d\n", version, *port, defFramepause)
 	err := srv.ListenAndServe()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
