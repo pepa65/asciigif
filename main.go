@@ -15,7 +15,7 @@ import (
 	"github.com/pepa65/asciigif/frames"
 )
 
-var version = "0.18.0"
+var version = "0.19.0"
 var clientnumber = 0
 var repo = "github.com/pepa65/asciigif"
 var defaultFramepause = 70
